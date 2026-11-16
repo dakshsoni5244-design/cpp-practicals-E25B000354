@@ -1,54 +1,51 @@
-// Practical 08: Factory design pattern - creating vehicles by requested type
+// Practical 08: Factory design pattern
 #include <iostream>
-#include <memory>
-#include <stdexcept>
 #include <string>
 using namespace std;
 
 class Vehicle {
 public:
-    virtual void drive() const = 0;
-    virtual int wheels() const = 0;
-    virtual ~Vehicle() = default;
+    virtual void drive() = 0;
+    virtual ~Vehicle() {}
 };
 
 class Car : public Vehicle {
 public:
-    void drive() const override { cout << "Car: driving on the road\n"; }
-    int wheels() const override { return 4; }
+    void drive() { cout << "Car is running on 4 wheels\n"; }
 };
 
 class Bike : public Vehicle {
 public:
-    void drive() const override { cout << "Bike: riding with two wheels\n"; }
-    int wheels() const override { return 2; }
+    void drive() { cout << "Bike is running on 2 wheels\n"; }
 };
 
 class Truck : public Vehicle {
 public:
-    void drive() const override { cout << "Truck: carrying heavy load\n"; }
-    int wheels() const override { return 6; }
+    void drive() { cout << "Truck is carrying a heavy load\n"; }
 };
 
-// Factory: client code asks for a type by name and does not use 'new Car' etc.
+// Factory: creates the object according to the name we ask for
 class VehicleFactory {
 public:
-    static unique_ptr<Vehicle> create(const string& type) {
-        if (type == "car")   return make_unique<Car>();
-        if (type == "bike")  return make_unique<Bike>();
-        if (type == "truck") return make_unique<Truck>();
-        throw invalid_argument("Unknown vehicle type: " + type);
+    static Vehicle* create(string type) {
+        if (type == "car")   return new Car();
+        if (type == "bike")  return new Bike();
+        if (type == "truck") return new Truck();
+        return nullptr;      // unknown type
     }
 };
 
 int main() {
-    for (const string t : {"car", "bike", "truck", "plane"}) {
-        try {
-            auto v = VehicleFactory::create(t);
-            cout << "Requested '" << t << "' -> wheels: " << v->wheels() << " | ";
+    string types[4] = {"car", "bike", "truck", "plane"};
+
+    for (int i = 0; i < 4; i++) {
+        cout << "Asking for: " << types[i] << " -> ";
+        Vehicle* v = VehicleFactory::create(types[i]);
+        if (v == nullptr) {
+            cout << "unknown vehicle type\n";
+        } else {
             v->drive();
-        } catch (const invalid_argument& e) {
-            cout << "Requested '" << t << "' -> error: " << e.what() << "\n";
+            delete v;
         }
     }
     return 0;

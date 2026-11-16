@@ -33,10 +33,10 @@ errors handled with a custom exception hierarchy.
 
 ```bash
 cd p12_library_project
-g++ -std=c++17 -Wall -Wextra -o library src/main.cpp
+g++ -o library src/main.cpp
 ./library          # interactive menu
 ./library --demo   # scripted demo with normal and error cases
 ```
 
-Classes: `Item` (abstract) -> `Book`, `Library` (std::map of books), `LibraryException` and subclasses.
-The UML class diagram is in `docs/uml_class_diagram.png`.
+Classes: `Item` (abstract) -> `Book`, `Library`, `LibraryError`.
+The UML class diagram is in `docs/uml_class_diagram.png`. Classes: `Item` (abstract) -> `Book`, `Library` (vector of books), `LibraryError`.

@@ -1,53 +1,62 @@
-// Practical 09: Generic Stack using class templates
+// Practical 09: Stack using a class template
 #include <iostream>
-#include <stdexcept>
 #include <string>
-#include <vector>
 using namespace std;
 
-template <typename T>
+template <class T>
 class Stack {
-    vector<T> items;            // STL container used internally
+    T items[10];     // fixed size array
+    int top;         // index of the top item, -1 means empty
 public:
-    void push(const T& value) { items.push_back(value); }
+    Stack() { top = -1; }
+
+    bool isEmpty() { return top == -1; }
+    bool isFull()  { return top == 9; }
+
+    void push(T value) {
+        if (isFull()) {
+            cout << "Stack is full\n";
+            return;
+        }
+        top++;
+        items[top] = value;
+    }
 
     void pop() {
-        if (empty()) throw underflow_error("Stack is empty: cannot pop");
-        items.pop_back();
+        if (isEmpty()) {
+            cout << "Stack is empty, cannot pop\n";
+            return;
+        }
+        top--;
     }
 
-    // Safe access to the next (top) item
-    const T& top() const {
-        if (empty()) throw underflow_error("Stack is empty: no top element");
-        return items.back();
+    T peek() {       // look at the top item
+        return items[top];
     }
-
-    bool empty() const { return items.empty(); }
-    size_t size() const { return items.size(); }
 };
 
-// Test helper: works for any element type
-template <typename T>
-void testStack(const string& label, const T& a, const T& b, const T& c) {
-    cout << "--- Stack<" << label << "> ---\n";
+// works for any type T
+template <class T>
+void test(T a, T b, T c) {
     Stack<T> s;
-    s.push(a); s.push(b); s.push(c);
-    cout << "size after 3 pushes: " << s.size() << "\n";
-    while (!s.empty()) {
-        cout << "top = " << s.top() << " -> pop\n";
+    s.push(a);
+    s.push(b);
+    s.push(c);
+    while (!s.isEmpty()) {
+        cout << "top = " << s.peek() << "\n";
         s.pop();
     }
-    try {
-        s.pop();                // invalid operation on an empty stack
-    } catch (const underflow_error& e) {
-        cout << "Caught: " << e.what() << "\n";
-    }
-    cout << "\n";
+    s.pop();   // empty-stack test
 }
 
 int main() {
-    testStack<int>("int", 10, 20, 30);
-    testStack<float>("float", 1.5f, 2.5f, 3.5f);
-    testStack<string>("string", "apple", "banana", "cherry");
+    cout << "--- int stack ---\n";
+    test<int>(10, 20, 30);
+
+    cout << "\n--- float stack ---\n";
+    test<float>(1.5f, 2.5f, 3.5f);
+
+    cout << "\n--- string stack ---\n";
+    test<string>("apple", "banana", "cherry");
     return 0;
 }

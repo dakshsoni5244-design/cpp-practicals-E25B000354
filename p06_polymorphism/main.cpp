@@ -1,60 +1,51 @@
-// Practical 06: Runtime polymorphism and abstract classes
-#include <cmath>
-#include <iomanip>
+// Practical 06: Abstract class and runtime polymorphism
 #include <iostream>
-#include <memory>
-#include <string>
-#include <vector>
 using namespace std;
 
-// Abstract class: has a pure virtual function, so objects of Shape cannot be created.
+// Abstract class: it has a pure virtual function (= 0)
 class Shape {
 public:
-    virtual double area() const = 0;            // pure virtual
-    virtual string name() const = 0;
-    virtual ~Shape() = default;                 // virtual destructor
+    virtual double area() = 0;
+    virtual ~Shape() {}
 };
 
 class Circle : public Shape {
     double r;
 public:
-    explicit Circle(double radius) : r(radius) {}
-    double area() const override { return M_PI * r * r; }
-    string name() const override { return "Circle"; }
+    Circle(double radius) { r = radius; }
+    double area() { return 3.14159 * r * r; }
 };
 
 class Rectangle : public Shape {
-    double l, w;
+    double l, b;
 public:
-    Rectangle(double length, double width) : l(length), w(width) {}
-    double area() const override { return l * w; }
-    string name() const override { return "Rectangle"; }
+    Rectangle(double length, double breadth) { l = length; b = breadth; }
+    double area() { return l * b; }
 };
 
 class Triangle : public Shape {
-    double b, h;
+    double base, height;
 public:
-    Triangle(double base, double height) : b(base), h(height) {}
-    double area() const override { return 0.5 * b * h; }
-    string name() const override { return "Triangle"; }
+    Triangle(double bs, double h) { base = bs; height = h; }
+    double area() { return 0.5 * base * height; }
 };
 
 int main() {
-    // Shape s;   // ERROR: cannot instantiate abstract class
+    // Shape s;   // ERROR: cannot create an object of an abstract class
 
-    vector<unique_ptr<Shape>> shapes;
-    shapes.push_back(make_unique<Circle>(5.0));
-    shapes.push_back(make_unique<Rectangle>(4.0, 6.0));
-    shapes.push_back(make_unique<Triangle>(8.0, 3.0));
+    Shape* shapes[3];
+    shapes[0] = new Circle(5);
+    shapes[1] = new Rectangle(4, 6);
+    shapes[2] = new Triangle(8, 3);
 
-    cout << fixed << setprecision(2);
-    for (const auto& s : shapes) {
-        // The call goes through the base-class interface; the correct
-        // derived area() is chosen at run time using the vtable.
-        cout << s->name() << " area = " << s->area() << "\n";
+    string names[3] = {"Circle", "Rectangle", "Triangle"};
+
+    for (int i = 0; i < 3; i++) {
+        // The function of the real object is called at run time
+        cout << names[i] << " area = " << shapes[i]->area() << "\n";
     }
 
-    Shape& ref = *shapes[1];    // base-class reference to a Rectangle
-    cout << "Via reference: " << ref.name() << " area = " << ref.area() << "\n";
+    for (int i = 0; i < 3; i++)
+        delete shapes[i];
     return 0;
 }

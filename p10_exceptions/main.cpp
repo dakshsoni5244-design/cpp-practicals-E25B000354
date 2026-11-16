@@ -1,82 +1,57 @@
-// Practical 10: Custom exception hierarchy - banking transactions
-#include <exception>
+// Practical 10: Custom exceptions in a banking program
 #include <iostream>
-#include <stdexcept>
-#include <string>
+#include <exception>
 using namespace std;
 
-// Base class for all bank errors
-class BankException : public runtime_error {
+// Custom exception 1: amount is zero or negative
+class InvalidAmount : public exception {
 public:
-    explicit BankException(const string& msg) : runtime_error(msg) {}
+    const char* what() const noexcept {
+        return "Invalid amount: it must be greater than 0";
+    }
 };
 
-// Thrown when the amount is zero or negative
-class InvalidAmount : public BankException {
+// Custom exception 2: amount is more than the balance
+class InsufficientFunds : public exception {
 public:
-    explicit InvalidAmount(double amount)
-        : BankException("Invalid amount: " + to_string(amount) + " (must be positive)") {}
-};
-
-// Thrown when the withdrawal is more than the balance
-class InsufficientFunds : public BankException {
-public:
-    InsufficientFunds(double balance, double requested)
-        : BankException("Insufficient funds: balance " + to_string(balance) +
-                        ", requested " + to_string(requested)) {}
+    const char* what() const noexcept {
+        return "Insufficient funds: balance is too low";
+    }
 };
 
 class BankAccount {
     double balance;
 public:
-    explicit BankAccount(double b) : balance(b) {}
+    BankAccount(double b) { balance = b; }
 
     void withdraw(double amount) {
-        if (amount <= 0) throw InvalidAmount(amount);
-        if (amount > balance) throw InsufficientFunds(balance, amount);
-        balance -= amount;      // changed only after all checks pass
+        if (amount <= 0)
+            throw InvalidAmount();
+        if (amount > balance)
+            throw InsufficientFunds();
+        balance = balance - amount;     // changed only if no error
     }
 
-    void transfer(BankAccount& to, double amount) {
-        withdraw(amount);       // if this throws, 'to' is untouched
-        to.balance += amount;
-    }
-
-    double getBalance() const { return balance; }
+    double getBalance() { return balance; }
 };
 
 int main() {
-    BankAccount a(1000), b(500);
-    double tests[] = {300, -50, 0, 5000, 200};
+    BankAccount acc(1000);
+    double amounts[5] = {300, -50, 0, 5000, 200};
 
-    for (double amt : tests) {
-        cout << "Withdraw " << amt << ": ";
+    for (int i = 0; i < 5; i++) {
+        cout << "Withdraw " << amounts[i] << " : ";
         try {
-            a.withdraw(amt);
-            cout << "success, balance = " << a.getBalance() << "\n";
-        } catch (const InvalidAmount& e) {
-            cout << "InvalidAmount caught -> " << e.what() << "\n";
-        } catch (const InsufficientFunds& e) {
-            cout << "InsufficientFunds caught -> " << e.what() << "\n";
-        } catch (const exception& e) {
-            cout << "Other error: " << e.what() << "\n";
+            acc.withdraw(amounts[i]);
+            cout << "done, balance = " << acc.getBalance() << "\n";
+        }
+        catch (InvalidAmount& e) {
+            cout << e.what() << "\n";
+        }
+        catch (InsufficientFunds& e) {
+            cout << e.what() << "\n";
         }
     }
-
-    cout << "\nTransfer 200 from A to B: ";
-    try {
-        a.transfer(b, 200);
-        cout << "success. A=" << a.getBalance() << " B=" << b.getBalance() << "\n";
-    } catch (const BankException& e) {
-        cout << e.what() << "\n";
-    }
-
-    cout << "Transfer 9999 from A to B: ";
-    try {
-        a.transfer(b, 9999);
-    } catch (const BankException& e) {
-        cout << "failed (" << e.what() << ")\n";
-    }
-    cout << "Balances unchanged by failure. A=" << a.getBalance() << " B=" << b.getBalance() << "\n";
+    cout << "Final balance = " << acc.getBalance() << "\n";
     return 0;
 }
