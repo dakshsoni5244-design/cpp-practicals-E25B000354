@@ -24,7 +24,7 @@ g++ -std=c++17 -Wall -Wextra -o app pXX_name/main.cpp
 | 11 | `p11_csv_fileio` | CSV records with fstream, seekg/seekp/tellg/tellp |
 | 12 | `p12_library_project` | Mini project: Library Management System |
 
-The full write-up with code, output and notes is in `docs/CPP_Practical_Manual_Daksh_Soni.docx`.
+The full write-up with code, output and notes is in `docs/CPP_Practical_File_Daksh_Soni.docx`.
 
 ## Mini project: Library Management System
 
