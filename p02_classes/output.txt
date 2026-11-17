@@ -1,0 +1,16 @@
+--- Initial details ---
+Account No: 1001 | Holder: Daksh Soni | Balance: 5000
+Account No: 1002 | Holder: Aman Verma | Balance: 1200
+
+--- Operations on account 1 ---
+Deposited 1500. New balance: 6500
+Withdrew 2000. New balance: 4500
+Withdraw failed: insufficient balance.
+
+--- Operations on account 2 ---
+Deposit failed: amount must be positive.
+Withdrew 200. New balance: 1000
+
+--- Final details ---
+Account No: 1001 | Holder: Daksh Soni | Balance: 4500
+Account No: 1002 | Holder: Aman Verma | Balance: 1000

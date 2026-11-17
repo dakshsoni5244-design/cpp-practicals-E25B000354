@@ -1,0 +1,31 @@
+== Default and parameterized ==
+[default ctor]
+[parameterized ctor] size=4
+b (size 4): 7 7 7 7 
+
+== Copy constructor (deep copy) ==
+[copy ctor] size=4
+b (size 4): 7 7 7 7 
+c (size 4): 99 7 7 7 
+
+== Copy assignment ==
+[copy assignment]
+a (size 4): 7 7 7 7 
+
+== Move constructor ==
+[move ctor] size=4
+d (size 4): 99 7 7 7 
+c (moved-from) (size 0): 
+
+== Move assignment ==
+[parameterized ctor] size=2
+[move assignment]
+e (size 4): 99 7 7 7 
+d (moved-from) (size 0): 
+
+== End of main, destructors run ==
+[destructor] size=4
+[destructor] size=0
+[destructor] size=0
+[destructor] size=4
+[destructor] size=4

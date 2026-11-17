@@ -1,0 +1,23 @@
+--- raw pointer ---
+raw created
+using raw
+raw deleted
+
+--- unique_ptr ---
+unique created
+using unique
+u is empty now, u2 is the owner
+using unique
+
+--- shared_ptr ---
+shared created
+owners = 1
+owners = 2
+owners = 1
+
+--- 1000 iterations with unique_ptr ---
+done, no leak
+
+--- end of main ---
+shared deleted
+unique deleted

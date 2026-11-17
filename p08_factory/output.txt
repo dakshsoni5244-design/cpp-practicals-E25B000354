@@ -1,0 +1,4 @@
+Asking for: car -> Car is running on 4 wheels
+Asking for: bike -> Bike is running on 2 wheels
+Asking for: truck -> Truck is carrying a heavy load
+Asking for: plane -> unknown vehicle type

@@ -1,0 +1,16 @@
+=== Single inheritance (Person -> Student) ===
+Person constructor: Daksh Soni
+Student constructor: E25B000354
+Name: Daksh Soni, Age: 19
+Student ID: E25B000354, Course: B.Tech AIDS
+
+=== Multilevel inheritance (Person -> Student -> GraduateStudent) ===
+Person constructor: Riya Sharma
+Student constructor: PG2024001
+GraduateStudent constructor: Federated Learning
+Name: Riya Sharma, Age: 24
+Student ID: PG2024001, Course: M.Tech Data Science
+Research Topic: Federated Learning, Supervisor: Dr. Mehta
+
+Inherited members available to GraduateStudent: displayPerson() and displayStudent()
+Name: Riya Sharma, Age: 24

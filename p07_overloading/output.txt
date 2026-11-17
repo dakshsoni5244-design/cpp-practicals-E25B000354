@@ -1,0 +1,11 @@
+--- Function overloading ---
+add(int,int)       : add(3, 4)       = 7
+add(double,double) : add(2.5, 3.7)   = 6.2
+add(int,int,int)   : add(1, 2, 3)    = 6
+
+--- Operator overloading ---
+c1 = 3 + 4i
+c2 = 1 - 2i
+c1 + c2 = 4 + 2i
+c1 - c2 = 2 + 6i
+c1 * c2 = 11 - 2i

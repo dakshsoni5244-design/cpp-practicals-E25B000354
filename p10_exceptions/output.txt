@@ -1,0 +1,6 @@
+Withdraw 300 : done, balance = 700
+Withdraw -50 : Invalid amount: it must be greater than 0
+Withdraw 0 : Invalid amount: it must be greater than 0
+Withdraw 5000 : Insufficient funds: balance is too low
+Withdraw 200 : done, balance = 500
+Final balance = 500

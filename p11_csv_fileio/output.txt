@@ -1,0 +1,20 @@
+Wrote 3 records to students.csv
+
+Records read back:
+ID    Name            Marks
+Malformed line 6: bad_line_without_commas
+101   Daksh Soni      88.5
+102   Aman Verma      76
+103   Neha Patel      91.25
+104   Karan Singh     67.5
+
+=== File position functions (separate demo file: demo.txt) ===
+tellp() after writing 10 chars : 10
+tellp() after seekp(3)         : 3
+tellp() after writing 'xyz'    : 6
+tellg() at start                : 0
+read 'A', tellg() now        : 1
+tellg() after seekg(5)         : 5
+char at index 5                : 'z'
+char at end-2                  : 'I'
+whole file now                 : ABCxyzGHIJ

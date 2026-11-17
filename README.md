@@ -40,3 +40,5 @@ g++ -o library src/main.cpp
 
 Classes: `Item` (abstract) -> `Book`, `Library`, `LibraryError`.
 The UML class diagram is in `docs/uml_class_diagram.png`. Classes: `Item` (abstract) -> `Book`, `Library` (vector of books), `LibraryError`.
+
+Each practical folder also has an `output.txt` with the program output.

@@ -1,0 +1,11 @@
+(Input typed: Daksh Soni, 354, 78 65 82)
+Enter student name: Enter roll number: Enter marks of 3 subjects (out of 100): 
+----- Result -----
+Name        : Daksh Soni
+Roll number : 354
+Total       : 225 / 300
+Percentage  : 75%
+Total % 10  : 5
+Grade       : A
+Distinction : Yes
+Status      : PASS
