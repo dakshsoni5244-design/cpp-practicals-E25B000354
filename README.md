@@ -41,4 +41,4 @@ g++ -o library src/main.cpp
 Classes: `Item` (abstract) -> `Book`, `Library`, `LibraryError`.
 The UML class diagram is in `docs/uml_class_diagram.png`. Classes: `Item` (abstract) -> `Book`, `Library` (vector of books), `LibraryError`.
 
-Each practical folder also has an `output.txt` with the program output.
+Each practical folder has its own `README.md`, the source code and `output.txt` (program output). Practicals 1 and 12 also have `input_valid.txt`, `input_invalid.txt` and `output_invalid_input.txt`. Practicals 3 and 4 have `valgrind_output.txt`.

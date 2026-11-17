@@ -20,6 +20,13 @@ int main() {
     cout << "Enter marks of " << TOTAL_SUBJECTS << " subjects (out of 100): ";
     cin >> m1 >> m2 >> m3;
 
+    // Check the input: numbers only, marks between 0 and 100
+    if (!cin || m1 < 0 || m1 > 100 || m2 < 0 || m2 > 100 || m3 < 0 || m3 > 100) {
+        cout << "\nError: invalid input. Roll number and marks must be numbers, "
+                "and marks must be between 0 and 100.\n";
+        return 1;
+    }
+
     // Arithmetic operators
     double total = m1 + m2 + m3;
     double percentage = total / TOTAL_SUBJECTS;   // each subject is out of 100

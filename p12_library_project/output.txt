@@ -1,30 +1,90 @@
-=== All books ===
-101 | Introduction to Algorithms | Cormen | Available
+
+1. Add book
+2. List books
+3. Search
+4. Issue book
+5. Return book
+0. Save and exit
+Enter choice: 101 | Introduction to Algorithms | Cormen | Available
 102 | Database System Concepts | Korth | Available
 103 | Data Science from Scratch | Joel Grus | Available
 104 | The C++ Programming Language | Bjarne Stroustrup | Available
 105 | Artificial Intelligence: A Modern Approach | Russell and Norvig | Available
 
-Add book 106 -> OK
-Add book 101 again -> Error: Book ID 101 already exists
-Add book with empty title -> Error: ID must be positive and title/author cannot be empty
-Issue book 102 -> OK
-Issue book 102 again -> Error: 'Database System Concepts' is already issued
-Issue book 999 -> Error: Book ID 999 not found
-Return book 103 (not issued) -> Error: 'Data Science from Scratch' was not issued
-Return book 102 -> OK
-Issue book 104 -> OK
-
-Search for 'Data':
-102 | Database System Concepts | Korth | Available
+1. Add book
+2. List books
+3. Search
+4. Issue book
+5. Return book
+0. Save and exit
+Enter choice: Search word: 102 | Database System Concepts | Korth | Available
 103 | Data Science from Scratch | Joel Grus | Available
 
-=== All books now ===
-101 | Introduction to Algorithms | Cormen | Available
+1. Add book
+2. List books
+3. Search
+4. Issue book
+5. Return book
+0. Save and exit
+Enter choice: Book ID: Book issued
+
+1. Add book
+2. List books
+3. Search
+4. Issue book
+5. Return book
+0. Save and exit
+Enter choice: 101 | Introduction to Algorithms | Cormen | Available
+102 | Database System Concepts | Korth | Issued
+103 | Data Science from Scratch | Joel Grus | Available
+104 | The C++ Programming Language | Bjarne Stroustrup | Available
+105 | Artificial Intelligence: A Modern Approach | Russell and Norvig | Available
+
+1. Add book
+2. List books
+3. Search
+4. Issue book
+5. Return book
+0. Save and exit
+Enter choice: Book ID: Book returned
+
+1. Add book
+2. List books
+3. Search
+4. Issue book
+5. Return book
+0. Save and exit
+Enter choice: 101 | Introduction to Algorithms | Cormen | Available
 102 | Database System Concepts | Korth | Available
 103 | Data Science from Scratch | Joel Grus | Available
-104 | The C++ Programming Language | Bjarne Stroustrup | Issued
+104 | The C++ Programming Language | Bjarne Stroustrup | Available
+105 | Artificial Intelligence: A Modern Approach | Russell and Norvig | Available
+
+1. Add book
+2. List books
+3. Search
+4. Issue book
+5. Return book
+0. Save and exit
+Enter choice: ID: Title: Author: Book added
+
+1. Add book
+2. List books
+3. Search
+4. Issue book
+5. Return book
+0. Save and exit
+Enter choice: 101 | Introduction to Algorithms | Cormen | Available
+102 | Database System Concepts | Korth | Available
+103 | Data Science from Scratch | Joel Grus | Available
+104 | The C++ Programming Language | Bjarne Stroustrup | Available
 105 | Artificial Intelligence: A Modern Approach | Russell and Norvig | Available
 106 | Operating Systems | Silberschatz | Available
 
-Saved to data/books.csv
+1. Add book
+2. List books
+3. Search
+4. Issue book
+5. Return book
+0. Save and exit
+Enter choice: Saved. Bye!

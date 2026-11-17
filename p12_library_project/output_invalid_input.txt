@@ -1,0 +1,56 @@
+
+1. Add book
+2. List books
+3. Search
+4. Issue book
+5. Return book
+0. Save and exit
+Enter choice: Please enter a number
+
+1. Add book
+2. List books
+3. Search
+4. Issue book
+5. Return book
+0. Save and exit
+Enter choice: Invalid choice
+
+1. Add book
+2. List books
+3. Search
+4. Issue book
+5. Return book
+0. Save and exit
+Enter choice: Book ID: Error: Book ID 999 not found
+
+1. Add book
+2. List books
+3. Search
+4. Issue book
+5. Return book
+0. Save and exit
+Enter choice: Book ID: Error: 'Data Science from Scratch' was not issued
+
+1. Add book
+2. List books
+3. Search
+4. Issue book
+5. Return book
+0. Save and exit
+Enter choice: ID: Title: Author: Error: Book ID 101 already exists
+
+1. Add book
+2. List books
+3. Search
+4. Issue book
+5. Return book
+0. Save and exit
+Enter choice: ID: Title: Author: Error: ID must be positive and title/author cannot be empty
+
+1. Add book
+2. List books
+3. Search
+4. Issue book
+5. Return book
+0. Save and exit
+Enter choice: Saved. Bye!
