@@ -1,4 +1,4 @@
-# opps_daksh-soni_-E25B000354
+# cpp-practicals-E25B000354
 
 C++ Programming practical manual (RSSOFTTECS) - Daksh Soni, B.Tech AIDS, Roll No. E25B000354.
 
