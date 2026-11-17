@@ -68,6 +68,12 @@ Asking for: truck -> Truck is carrying a heavy load
 Asking for: plane -> unknown vehicle type
 ```
 
+## Notes: Use case and trade-offs
+
+- Use case: when objects are created from a name or setting and used through one common class (Vehicle).
+- Benefit: the calling code does not need to know Car, Bike or Truck, so new types are easy to add.
+- Trade-off: extra classes, and the factory must be edited when a new type is added.
+
 ## Compile and run
 
 ```bash

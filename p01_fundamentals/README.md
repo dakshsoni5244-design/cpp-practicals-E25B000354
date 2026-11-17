@@ -66,7 +66,10 @@ int main() {
 ## Output
 
 ```text
-Enter student name: Enter roll number: Enter marks of 3 subjects (out of 100): 
+Enter student name: Daksh Soni
+Enter roll number: 354
+Enter marks of 3 subjects (out of 100): 78 65 82
+
 ----- Result -----
 Name        : Daksh Soni
 Roll number : 354
@@ -81,9 +84,17 @@ Status      : PASS
 ## Output with invalid input
 
 ```text
-Enter student name: Enter roll number: Enter marks of 3 subjects (out of 100): 
+Enter student name: Daksh Soni
+Enter roll number: 354
+Enter marks of 3 subjects (out of 100): 78 abc 82
+
 Error: invalid input. Roll number and marks must be numbers, and marks must be between 0 and 100.
 ```
+
+## Notes: data types and operators
+
+- string, int, double and char store the name, roll number, marks and grade. const values (PASS_PERCENT, TOTAL_SUBJECTS) cannot be changed.
+- Arithmetic: +, / and %. Relational: >=, <. Logical: &&, !. The input is checked, so letters or marks outside 0-100 give an error message.
 
 ## Compile and run
 

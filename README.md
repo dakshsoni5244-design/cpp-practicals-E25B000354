@@ -20,7 +20,7 @@ g++ -std=c++17 -Wall -Wextra -o app pXX_name/main.cpp
 | 07 | `p07_overloading` | Function and operator overloading (ComplexNumber) |
 | 08 | `p08_factory` | Factory design pattern (vehicles) |
 | 09 | `p09_templates` | Generic Stack<T> with int, float, string |
-| 10 | `p10_exceptions` | Custom exception hierarchy (banking) |
+| 10 | `p10_exceptions` | Custom exception classes (banking) |
 | 11 | `p11_csv_fileio` | CSV records with fstream, seekg/seekp/tellg/tellp |
 | 12 | `p12_library_project` | Mini project: Library Management System |
 
@@ -29,7 +29,7 @@ The full write-up with code, output and notes is in `docs/CPP_Practical_File_Dak
 ## Mini project: Library Management System
 
 Features: add, list, search, issue and return books; data saved to / loaded from `data/books.csv`;
-errors handled with a custom exception hierarchy.
+errors handled with a custom exception class.
 
 ```bash
 cd p12_library_project
@@ -38,7 +38,7 @@ g++ -o library src/main.cpp
 ./library --demo   # scripted demo with normal and error cases
 ```
 
-Classes: `Item` (abstract) -> `Book`, `Library`, `LibraryError`.
-The UML class diagram is in `docs/uml_class_diagram.png`. Classes: `Item` (abstract) -> `Book`, `Library` (vector of books), `LibraryError`.
+Classes: `Item` (abstract) -> `Book`, `Library` (vector of books), `LibraryError`.
+The UML class diagram is in `docs/uml_class_diagram.png`.
 
 Each practical folder has its own `README.md`, the source code and `output.txt` (program output). Practicals 1 and 12 also have `input_valid.txt`, `input_invalid.txt` and `output_invalid_input.txt`. Practicals 3 and 4 have `valgrind_output.txt`.

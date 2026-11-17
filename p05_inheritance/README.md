@@ -95,6 +95,11 @@ Inherited members available to GraduateStudent: displayPerson() and displayStude
 Name: Riya Sharma, Age: 24
 ```
 
+## Notes: Inherited members
+
+- Student gets name, age and displayPerson() from Person. GraduateStudent gets everything from Student and, through Student, from Person, so g.displayPerson() works in main().
+- Protected members are visible in derived classes but hidden from outside code. Constructors run from the base class downwards: Person, Student, GraduateStudent.
+
 ## Compile and run
 
 ```bash

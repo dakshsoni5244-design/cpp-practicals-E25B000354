@@ -98,7 +98,7 @@ unique deleted
 Memcheck, a memory error detector
 Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
 Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-Command: /tmp/bin/p04_smart_pointers
+Command: ./app
 
 
 HEAP SUMMARY:
@@ -110,6 +110,13 @@ All heap blocks were freed -- no leaks are possible
 For lists of detected and suppressed errors, rerun with: -s
 ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 ```
+
+## Notes: Raw pointer vs unique_ptr vs shared_ptr
+
+- Raw pointer: we must call delete ourselves; it leaks if we forget.
+- unique_ptr: exactly one owner, cannot be copied (only moved), freed automatically at the end of its scope.
+- shared_ptr: many owners, counted with use_count() (1, then 2, then 1 in the output); freed when the last owner goes away.
+- Memory check: Valgrind (--leak-check=full) shows 1005 allocations, 1005 frees, 0 errors, including the loop of 1000 iterations without any delete.
 
 ## Compile and run
 

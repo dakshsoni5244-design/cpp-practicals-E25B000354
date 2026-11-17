@@ -139,6 +139,12 @@ char at end-2                  : 'I'
 whole file now                 : ABCxyzGHIJ
 ```
 
+## Notes: Get and put positions
+
+- Input (get) position: where the next read happens (tellg, seekg). Output (put) position: where the next write happens (tellp, seekp).
+- In the demo, seekp(3) then writing xyz changed ABCDEFGHIJ to ABCxyzGHIJ. seekg(5) moved the read position to the character z, and seekg(-2, ios::end) moved to the second-last character, I.
+- CSV format: first line id,name,marks, then one student per line. A malformed line (line 6) is reported and skipped.
+
 ## Compile and run
 
 ```bash

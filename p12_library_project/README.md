@@ -1,6 +1,29 @@
 # Practical 12: Library Management System
 
-Console project: add, list, search, issue and return books. Data is saved in data/books.csv. Classes: Item (abstract), Book, Library, LibraryError.
+Console program for a librarian: it keeps a record of which books are in the library and which are issued, and saves the data in a CSV file so nothing is lost when the program is closed.
+
+## Features
+
+- Add a book (ID, title, author) with checks for a wrong ID, empty fields and a duplicate ID
+- List all books and search by a word in the title or author
+- Issue a book and return a book
+- Errors (unknown ID, already issued, not issued, wrong menu input) show a clear message and the program keeps running
+- Data is loaded from `data/books.csv` at the start and saved when you exit
+
+## Classes
+
+| Class | Work |
+|-------|------|
+| `Item` (abstract) | Base class with id and title; `display()` is a pure virtual function |
+| `Book` | Derived from Item; adds author and available; implements `display()` |
+| `Library` | Keeps the books in a `vector`; add, search, issue, return, list, save, load |
+| `LibraryError` | Our own exception class (derived from `std::exception`) |
+
+## UML class diagram
+
+![UML class diagram](../docs/uml_class_diagram.png)
+
+Use of the course concepts: classes and inheritance (Item, Book), STL (`vector`), file handling (`ifstream` / `ofstream` with CSV), exception handling (`LibraryError`).
 
 ## Source Code (`src/main.cpp`)
 
@@ -240,7 +263,8 @@ int main(int argc, char* argv[]) {
 4. Issue book
 5. Return book
 0. Save and exit
-Enter choice: 101 | Introduction to Algorithms | Cormen | Available
+Enter choice: 2
+101 | Introduction to Algorithms | Cormen | Available
 102 | Database System Concepts | Korth | Available
 103 | Data Science from Scratch | Joel Grus | Available
 104 | The C++ Programming Language | Bjarne Stroustrup | Available
@@ -252,7 +276,9 @@ Enter choice: 101 | Introduction to Algorithms | Cormen | Available
 4. Issue book
 5. Return book
 0. Save and exit
-Enter choice: Search word: 102 | Database System Concepts | Korth | Available
+Enter choice: 3
+Search word: Data
+102 | Database System Concepts | Korth | Available
 103 | Data Science from Scratch | Joel Grus | Available
 
 1. Add book
@@ -261,7 +287,9 @@ Enter choice: Search word: 102 | Database System Concepts | Korth | Available
 4. Issue book
 5. Return book
 0. Save and exit
-Enter choice: Book ID: Book issued
+Enter choice: 4
+Book ID: 102
+Book issued
 
 1. Add book
 2. List books
@@ -269,7 +297,8 @@ Enter choice: Book ID: Book issued
 4. Issue book
 5. Return book
 0. Save and exit
-Enter choice: 101 | Introduction to Algorithms | Cormen | Available
+Enter choice: 2
+101 | Introduction to Algorithms | Cormen | Available
 102 | Database System Concepts | Korth | Issued
 103 | Data Science from Scratch | Joel Grus | Available
 104 | The C++ Programming Language | Bjarne Stroustrup | Available
@@ -281,7 +310,9 @@ Enter choice: 101 | Introduction to Algorithms | Cormen | Available
 4. Issue book
 5. Return book
 0. Save and exit
-Enter choice: Book ID: Book returned
+Enter choice: 5
+Book ID: 102
+Book returned
 
 1. Add book
 2. List books
@@ -289,7 +320,8 @@ Enter choice: Book ID: Book returned
 4. Issue book
 5. Return book
 0. Save and exit
-Enter choice: 101 | Introduction to Algorithms | Cormen | Available
+Enter choice: 2
+101 | Introduction to Algorithms | Cormen | Available
 102 | Database System Concepts | Korth | Available
 103 | Data Science from Scratch | Joel Grus | Available
 104 | The C++ Programming Language | Bjarne Stroustrup | Available
@@ -301,7 +333,11 @@ Enter choice: 101 | Introduction to Algorithms | Cormen | Available
 4. Issue book
 5. Return book
 0. Save and exit
-Enter choice: ID: Title: Author: Book added
+Enter choice: 1
+ID: 106
+Title: Operating Systems
+Author: Silberschatz
+Book added
 
 1. Add book
 2. List books
@@ -309,7 +345,8 @@ Enter choice: ID: Title: Author: Book added
 4. Issue book
 5. Return book
 0. Save and exit
-Enter choice: 101 | Introduction to Algorithms | Cormen | Available
+Enter choice: 2
+101 | Introduction to Algorithms | Cormen | Available
 102 | Database System Concepts | Korth | Available
 103 | Data Science from Scratch | Joel Grus | Available
 104 | The C++ Programming Language | Bjarne Stroustrup | Available
@@ -322,7 +359,8 @@ Enter choice: 101 | Introduction to Algorithms | Cormen | Available
 4. Issue book
 5. Return book
 0. Save and exit
-Enter choice: Saved. Bye!
+Enter choice: 0
+Saved. Bye!
 ```
 
 ## Output with invalid input
@@ -335,7 +373,8 @@ Enter choice: Saved. Bye!
 4. Issue book
 5. Return book
 0. Save and exit
-Enter choice: Please enter a number
+Enter choice: abc
+Please enter a number
 
 1. Add book
 2. List books
@@ -343,7 +382,8 @@ Enter choice: Please enter a number
 4. Issue book
 5. Return book
 0. Save and exit
-Enter choice: Invalid choice
+Enter choice: 9
+Invalid choice
 
 1. Add book
 2. List books
@@ -351,7 +391,9 @@ Enter choice: Invalid choice
 4. Issue book
 5. Return book
 0. Save and exit
-Enter choice: Book ID: Error: Book ID 999 not found
+Enter choice: 4
+Book ID: 999
+Error: Book ID 999 not found
 
 1. Add book
 2. List books
@@ -359,7 +401,9 @@ Enter choice: Book ID: Error: Book ID 999 not found
 4. Issue book
 5. Return book
 0. Save and exit
-Enter choice: Book ID: Error: 'Data Science from Scratch' was not issued
+Enter choice: 5
+Book ID: 103
+Error: 'Data Science from Scratch' was not issued
 
 1. Add book
 2. List books
@@ -367,7 +411,11 @@ Enter choice: Book ID: Error: 'Data Science from Scratch' was not issued
 4. Issue book
 5. Return book
 0. Save and exit
-Enter choice: ID: Title: Author: Error: Book ID 101 already exists
+Enter choice: 1
+ID: 101
+Title: Duplicate
+Author: Nobody
+Error: Book ID 101 already exists
 
 1. Add book
 2. List books
@@ -375,7 +423,11 @@ Enter choice: ID: Title: Author: Error: Book ID 101 already exists
 4. Issue book
 5. Return book
 0. Save and exit
-Enter choice: ID: Title: Author: Error: ID must be positive and title/author cannot be empty
+Enter choice: 1
+ID: 107
+Title: 
+Author: Someone
+Error: ID must be positive and title/author cannot be empty
 
 1. Add book
 2. List books
@@ -383,7 +435,8 @@ Enter choice: ID: Title: Author: Error: ID must be positive and title/author can
 4. Issue book
 5. Return book
 0. Save and exit
-Enter choice: Saved. Bye!
+Enter choice: 0
+Saved. Bye!
 ```
 
 ## Output of demo mode (`./library --demo`)

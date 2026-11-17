@@ -1,4 +1,7 @@
-Enter student name: Enter roll number: Enter marks of 3 subjects (out of 100): 
+Enter student name: Daksh Soni
+Enter roll number: 354
+Enter marks of 3 subjects (out of 100): 78 65 82
+
 ----- Result -----
 Name        : Daksh Soni
 Roll number : 354

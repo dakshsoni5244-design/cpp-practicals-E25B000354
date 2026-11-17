@@ -1,2 +1,5 @@
-Enter student name: Enter roll number: Enter marks of 3 subjects (out of 100): 
+Enter student name: Daksh Soni
+Enter roll number: 354
+Enter marks of 3 subjects (out of 100): 78 abc 82
+
 Error: invalid input. Roll number and marks must be numbers, and marks must be between 0 and 100.

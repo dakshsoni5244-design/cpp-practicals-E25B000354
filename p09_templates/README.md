@@ -91,6 +91,11 @@ top = apple
 Stack is empty, cannot pop
 ```
 
+## Notes: How the template avoids three copies of the code
+
+- T is a placeholder type. The compiler makes a separate Stack for int, float and string from the single template, so the push/pop logic is written only once.
+- Test cases: normal use (items come out in last-in first-out order) and the empty stack (pop() shows a message instead of crashing).
+
 ## Compile and run
 
 ```bash

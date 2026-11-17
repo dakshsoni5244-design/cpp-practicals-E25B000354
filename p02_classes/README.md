@@ -111,6 +111,11 @@ Account No: 1001 | Holder: Daksh Soni | Balance: 4500
 Account No: 1002 | Holder: Aman Verma | Balance: 1000
 ```
 
+## Notes: Private and public members
+
+- Private members (accountNumber, holderName, balance) can be used only inside the class. This protects the data: outside code cannot set a wrong balance directly (a1.balance = 999999; gives a compile error).
+- Public members (constructor, deposit, withdraw, getBalance, display) are the interface. They check the amount before changing the balance, so the object always stays valid.
+
 ## Compile and run
 
 ```bash

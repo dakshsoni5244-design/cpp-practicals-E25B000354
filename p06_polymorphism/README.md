@@ -66,6 +66,11 @@ Rectangle area = 24
 Triangle area = 12
 ```
 
+## Notes: Why Shape cannot be created
+
+- Shape has a pure virtual function (area() = 0), so it is abstract and only gives the interface. Shape s; gives a compile error.
+- area() is virtual, so s->area() calls the function of the real object (Circle, Rectangle or Triangle) at run time. The virtual destructor makes sure the derived object is destroyed properly.
+
 ## Compile and run
 
 ```bash

@@ -69,6 +69,12 @@ c1 - c2 = 2 + 6i
 c1 * c2 = 11 - 2i
 ```
 
+## Notes: Overloading vs runtime polymorphism
+
+- Function overloading: same name, different parameters; the compiler picks one at compile time.
+- Operator overloading: gives +, - and * a meaning for ComplexNumber, so c1 + c2 can be written directly. It is also decided at compile time.
+- Runtime polymorphism (practical 6): the function is chosen while the program runs, using virtual functions and the real object type.
+
 ## Compile and run
 
 ```bash

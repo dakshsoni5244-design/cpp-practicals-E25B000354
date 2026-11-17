@@ -5,7 +5,8 @@
 4. Issue book
 5. Return book
 0. Save and exit
-Enter choice: 101 | Introduction to Algorithms | Cormen | Available
+Enter choice: 2
+101 | Introduction to Algorithms | Cormen | Available
 102 | Database System Concepts | Korth | Available
 103 | Data Science from Scratch | Joel Grus | Available
 104 | The C++ Programming Language | Bjarne Stroustrup | Available
@@ -17,7 +18,9 @@ Enter choice: 101 | Introduction to Algorithms | Cormen | Available
 4. Issue book
 5. Return book
 0. Save and exit
-Enter choice: Search word: 102 | Database System Concepts | Korth | Available
+Enter choice: 3
+Search word: Data
+102 | Database System Concepts | Korth | Available
 103 | Data Science from Scratch | Joel Grus | Available
 
 1. Add book
@@ -26,7 +29,9 @@ Enter choice: Search word: 102 | Database System Concepts | Korth | Available
 4. Issue book
 5. Return book
 0. Save and exit
-Enter choice: Book ID: Book issued
+Enter choice: 4
+Book ID: 102
+Book issued
 
 1. Add book
 2. List books
@@ -34,7 +39,8 @@ Enter choice: Book ID: Book issued
 4. Issue book
 5. Return book
 0. Save and exit
-Enter choice: 101 | Introduction to Algorithms | Cormen | Available
+Enter choice: 2
+101 | Introduction to Algorithms | Cormen | Available
 102 | Database System Concepts | Korth | Issued
 103 | Data Science from Scratch | Joel Grus | Available
 104 | The C++ Programming Language | Bjarne Stroustrup | Available
@@ -46,7 +52,9 @@ Enter choice: 101 | Introduction to Algorithms | Cormen | Available
 4. Issue book
 5. Return book
 0. Save and exit
-Enter choice: Book ID: Book returned
+Enter choice: 5
+Book ID: 102
+Book returned
 
 1. Add book
 2. List books
@@ -54,7 +62,8 @@ Enter choice: Book ID: Book returned
 4. Issue book
 5. Return book
 0. Save and exit
-Enter choice: 101 | Introduction to Algorithms | Cormen | Available
+Enter choice: 2
+101 | Introduction to Algorithms | Cormen | Available
 102 | Database System Concepts | Korth | Available
 103 | Data Science from Scratch | Joel Grus | Available
 104 | The C++ Programming Language | Bjarne Stroustrup | Available
@@ -66,7 +75,11 @@ Enter choice: 101 | Introduction to Algorithms | Cormen | Available
 4. Issue book
 5. Return book
 0. Save and exit
-Enter choice: ID: Title: Author: Book added
+Enter choice: 1
+ID: 106
+Title: Operating Systems
+Author: Silberschatz
+Book added
 
 1. Add book
 2. List books
@@ -74,7 +87,8 @@ Enter choice: ID: Title: Author: Book added
 4. Issue book
 5. Return book
 0. Save and exit
-Enter choice: 101 | Introduction to Algorithms | Cormen | Available
+Enter choice: 2
+101 | Introduction to Algorithms | Cormen | Available
 102 | Database System Concepts | Korth | Available
 103 | Data Science from Scratch | Joel Grus | Available
 104 | The C++ Programming Language | Bjarne Stroustrup | Available
@@ -87,4 +101,5 @@ Enter choice: 101 | Introduction to Algorithms | Cormen | Available
 4. Issue book
 5. Return book
 0. Save and exit
-Enter choice: Saved. Bye!
+Enter choice: 0
+Saved. Bye!

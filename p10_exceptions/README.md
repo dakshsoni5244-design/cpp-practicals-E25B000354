@@ -75,6 +75,11 @@ Withdraw 200 : done, balance = 500
 Final balance = 500
 ```
 
+## Notes: What each exception means
+
+- InvalidAmount: thrown when the amount is zero or negative. InsufficientFunds: thrown when the amount is more than the balance.
+- Both are derived from std::exception and give their message through what(). The balance changes only after both checks pass, so a failed withdrawal does not change it.
+
 ## Compile and run
 
 ```bash

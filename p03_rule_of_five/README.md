@@ -156,7 +156,7 @@ d (moved-from) (size 0):
 Memcheck, a memory error detector
 Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
 Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-Command: /tmp/bin/p03_rule_of_five
+Command: ./app
 
 
 HEAP SUMMARY:
@@ -168,6 +168,14 @@ All heap blocks were freed -- no leaks are possible
 For lists of detected and suppressed errors, rerun with: -s
 ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 ```
+
+## Notes: The five special members
+
+- Destructor: frees the owned array with delete[].
+- Copy constructor: makes a deep copy (new memory). Changing c[0] did not change b, so the memory is not shared.
+- Copy assignment: copies into new memory, frees the old memory, and is safe for self-assignment.
+- Move constructor and move assignment: take the pointer from the other object and leave it empty (size 0), so nothing is copied.
+- Valgrind: 6 allocations, 6 frees, no leaks, 0 errors.
 
 ## Compile and run
 
