@@ -147,7 +147,14 @@ int main(int argc, char* argv[]) {
     try {
         lib.load(file);
     } catch (exception& e) {
-        cout << e.what() << " (starting with empty library)\n";
+        // No data file found (for example on an online compiler):
+        // start with 5 sample books built into the code
+        cout << e.what() << " (loading 5 sample books instead)\n";
+        lib.addBook(101, "Introduction to Algorithms", "Cormen");
+        lib.addBook(102, "Database System Concepts", "Korth");
+        lib.addBook(103, "Data Science from Scratch", "Joel Grus");
+        lib.addBook(104, "The C++ Programming Language", "Bjarne Stroustrup");
+        lib.addBook(105, "Artificial Intelligence: A Modern Approach", "Russell and Norvig");
     }
 
     if (argc > 1 && string(argv[1]) == "--demo") {
@@ -210,8 +217,12 @@ int main(int argc, char* argv[]) {
                 lib.returnBook(id);
                 cout << "Book returned\n";
             } else if (choice == 0) {
-                lib.save(file);
-                cout << "Saved. Bye!\n";
+                try {
+                    lib.save(file);
+                    cout << "Saved. Bye!\n";
+                } catch (exception& e) {
+                    cout << "Could not save: " << e.what() << ". Bye!\n";
+                }
             } else {
                 cout << "Invalid choice\n";
             }

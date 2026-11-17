@@ -9,6 +9,7 @@ Console program for a librarian: it keeps a record of which books are in the lib
 - Issue a book and return a book
 - Errors (unknown ID, already issued, not issued, wrong menu input) show a clear message and the program keeps running
 - Data is loaded from `data/books.csv` at the start and saved when you exit
+- If `data/books.csv` is not found (for example on an online compiler), the program starts with 5 sample books built into the code
 
 ## Classes
 
@@ -177,7 +178,14 @@ int main(int argc, char* argv[]) {
     try {
         lib.load(file);
     } catch (exception& e) {
-        cout << e.what() << " (starting with empty library)\n";
+        // No data file found (for example on an online compiler):
+        // start with 5 sample books built into the code
+        cout << e.what() << " (loading 5 sample books instead)\n";
+        lib.addBook(101, "Introduction to Algorithms", "Cormen");
+        lib.addBook(102, "Database System Concepts", "Korth");
+        lib.addBook(103, "Data Science from Scratch", "Joel Grus");
+        lib.addBook(104, "The C++ Programming Language", "Bjarne Stroustrup");
+        lib.addBook(105, "Artificial Intelligence: A Modern Approach", "Russell and Norvig");
     }
 
     if (argc > 1 && string(argv[1]) == "--demo") {
@@ -240,8 +248,12 @@ int main(int argc, char* argv[]) {
                 lib.returnBook(id);
                 cout << "Book returned\n";
             } else if (choice == 0) {
-                lib.save(file);
-                cout << "Saved. Bye!\n";
+                try {
+                    lib.save(file);
+                    cout << "Saved. Bye!\n";
+                } catch (exception& e) {
+                    cout << "Could not save: " << e.what() << ". Bye!\n";
+                }
             } else {
                 cout << "Invalid choice\n";
             }
@@ -480,3 +492,7 @@ Saved to data/books.csv
 g++ -o library src/main.cpp
 ./library --demo
 ```
+
+### On an online compiler (OneCompiler etc.)
+
+Paste `src/main.cpp` and run it. The 5 sample books load automatically. The menu needs input, so type your choices (for example `1`, `2`, `0`) in the **STDIN / input box** before pressing Run; saving on exit is skipped there because there is no `data` folder.
