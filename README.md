@@ -23,6 +23,7 @@ g++ -std=c++17 -Wall -Wextra -o app pXX_name/main.cpp
 | 10 | `p10_exceptions` | Custom exception classes (banking) |
 | 11 | `p11_csv_fileio` | CSV records with fstream, seekg/seekp/tellg/tellp |
 | 12 | `p12_library_project` | Mini project: Library Management System |
+| Extra | `mini_project_student_portal` | Separate mini project: Student Portal (Option C) |
 
 The full write-up with code, output and notes is in `docs/CPP_Practical_File_Daksh_Soni.docx`.
 
